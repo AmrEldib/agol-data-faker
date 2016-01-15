@@ -1,0 +1,38 @@
+﻿{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"coordinate": {
+			"id": "coordinate",
+			"description": "Coordinate",
+			"title": "coordinate",
+			"type": "array",
+			"minLength": 2,
+			"maxLength": 2,
+			"items": [ 
+				{
+					"id": "xCoordinate",
+					"title": "XCoordinate",
+					"type": "integer"
+				},
+				{
+					"id": "yCoordinate",
+					"title": "YCoordinate",
+					"type": "integer"
+				}
+			]
+		},
+		"extent": {
+			"id": "extent",
+			"description": "The bounding rectangle of the item. Should always be in WGS84",
+			"title": "extent",
+			"type": [ "array", "null" ],
+			"minLength": 2,
+			"maxLength": 2,
+			"items": {
+				"type": "object",
+				"oneOf": [ { "$ref": "#/definitions/coordinate" } ]
+			}
+
+		}
+	}
+}
