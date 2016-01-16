@@ -6,15 +6,21 @@
   "properties": {
     "username": {
       "id": "username",
-      "type": "string"
+      "type": "string",
+      "description": "The username of the content"
     },
-    "currentFolder": { "$ref": "folder" },
-		"items": {
-			"id": "items",
-			"type": "array",
-			"minLength": 0,
-			"items": { "$ref": "itemSummary" }
-		}
+    "currentFolder": {
+      "$ref": "folder" 
+    },
+    "items": {
+      "id": "items",
+      "type": "array",
+      "description": "The list of the user's items. See Item for response properties for more details",
+      "minLength": 0,
+      "items": {
+        "$ref": "item" 
+      }
+    }
 	},
 	"required": [ "username", "currentFolder", "items" ]
 }

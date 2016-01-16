@@ -2,9 +2,14 @@
 var fs = require('fs')
 var readMultipleFiles = require('read-multiple-files')
 
+jsf.extend('faker', function (faker) {
+  faker.locale = "en_US";
+  return faker;
+});
+
 fs.readFile('schema/userContent.json', function (err, schemaFileContent) {
 
-  readMultipleFiles(['schema/folder.json', 'schema/extent.json', 'schema/itemSummary.json', 'schema/coordinate.json'], 'utf8',
+  readMultipleFiles(['schema/folder.json', 'schema/extent.json', 'schema/item.json', 'schema/coordinate.json'], 'utf8',
   (err, contents) => {
     if (err) {
       throw err;
@@ -19,7 +24,9 @@ fs.readFile('schema/userContent.json', function (err, schemaFileContent) {
 
     var sample = jsf(schema, refs)
 
-    console.log(sample.username)
+    fs.writeFile('output/fakedata.json', JSON.stringify(sample))
+
+    console.log("fake data generated")
   })
 })
 

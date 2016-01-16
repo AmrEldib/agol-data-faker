@@ -1,6 +1,6 @@
 {
   "id": "folder",
-  "description": "User Folder",
+  "description": "The current folder listing the user's items",
   "title": "folder",
   "type": [ "object", "null" ],
   "additionalProperties": false,
@@ -8,22 +8,30 @@
     "username": {
       "id": "username",
       "type": "string",
-      "description": "The folder's owner."
+      "description": "The folder's owner.",
+      "chance": "first"
     },
     "id": {
       "id": "id",
       "type": "string",
-      "description": "The folder ID."
+      "description": "The folder ID.",
+      "chance": "hash"
     },
     "title": {
       "id": "title",
       "type": "string",
-      "description": "The folder Name."
+      "description": "The folder Name.",
+      "chance": {
+        "sentence": {
+          "words": 3
+        }
+      }
     },
     "created": {
       "id": "created",
       "type": "integer",
-      "description": "The date the folder was created. Shown in UNIX time."
+      "description": "The date the folder was created. Shown in UNIX time.",
+      "chance": "timestamp"
     }
   },
   "required": [ "created", "id", "title", "username" ]

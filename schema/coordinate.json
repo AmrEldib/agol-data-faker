@@ -9,12 +9,14 @@
     {
       "id": "xCoordinate",
       "title": "XCoordinate",
-      "type": "integer"
+      "type": "integer",
+      "chance": "longitude"
     },
     {
       "id": "yCoordinate",
       "title": "YCoordinate",
-      "type": "integer"
+      "type": "integer",
+      "chance": "latitude"
     }
   ]
 }
