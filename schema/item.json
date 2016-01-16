@@ -266,7 +266,12 @@
       "id": "size",
       "type": "integer",
       "description": "File size",
-      "chance": "natural"
+      "chance": {
+        "natural": {
+          "min": 1,
+          "max": 10000000
+        }
+      }
     },
     "commentsEnabled": {
       "id": "commentsEnabled",
@@ -282,31 +287,55 @@
       "id": "numComments",
       "type": "integer",
       "description": "Number of comments on this item",
-      "chance": "natural"
+      "chance": {
+        "integer": {
+          "min": 0,
+          "max": 999
+        }
+      }
     },
     "numRatings": {
       "id": "numRatings",
       "type": "integer",
       "description": "Number of ratings for this item",
-      "chance": "natural"
+      "chance": {
+        "integer": {
+          "min": 0,
+          "max": 999
+        }
+      }
     },
     "avgRating": {
       "id": "avgRating",
-      "type": "integer",
+      "type": "number",
       "description": "Average rating",
-      "chance": "natural"
+      "chance": {
+        "floating": {
+          "min": 0,
+          "max": 5,
+          "fixed": 1
+        }
+      }
     },
     "numViews": {
       "id": "numViews",
       "type": "integer",
       "description": "Total number of views for this item",
-      "chance": "natural"
+      "chance": {
+        "integer": {
+          "min": 0,
+          "max": 999
+        }
+      }
     },
     "industries": {
       "id": "industries",
-      "type": "string",
+      "type": "array",
       "description": "Primarily applies to industries associated with the application",
-      "chance": "natural"
+      "items": {
+        "type": "string",
+        "chance": "word"
+      }
     },
     "listed": {
       "id": "listed",
