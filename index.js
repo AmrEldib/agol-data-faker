@@ -1,7 +1,11 @@
-﻿var jsf = require('json-schema-faker')
+﻿#!/usr/bin/env node
+
+var jsf = require('json-schema-faker')
 var fs = require('fs')
+var path = require('path')
 var readMultipleFiles = require('read-multiple-files')
 var config = require('./config')
+var argv = require('minimist')(process.argv.slice(2))
 
 jsf.extend('faker', function (faker) {
   faker.locale = "en_US";
@@ -10,15 +14,24 @@ jsf.extend('faker', function (faker) {
 
 var generateFakeDataForSchema = function (schemaName, outputFile) {
 
+  // Check if schema name if valid
+  if (config.schemas[schemaName] == undefined) {
+    var keys = []
+    for (var key in config.schemas) {
+      keys.push(key)
+    }
+    throw Error("Invalid schema name. Name must be one of: " + keys)
+  }
+
   if (!outputFile) {
     outputFile = 'output/' + schemaName + '.json'
   }
 
   var schemaRefsFiles = config.schemas[schemaName].map(function (ref) {
-    return config.schemasFolder + '/' + ref + '.json'
+    return path.resolve(__dirname, config.schemasFolder + '/' + ref + '.json')
   })
 
-  fs.readFile(config.schemasFolder + '/' + schemaName + '.json', function (err, schemaFileContent) {
+  fs.readFile(path.resolve(__dirname, config.schemasFolder + '/' + schemaName + '.json'), function (err, schemaFileContent) {
 
     readMultipleFiles(schemaRefsFiles, 'utf8',
     (err, contents) => {
@@ -35,16 +48,17 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
 
       var sample = jsf(schema, refs)
 
-      fs.writeFile(outputFile, JSON.stringify(sample, null, 2))
+      fs.writeFile(path.resolve(__dirname, outputFile), JSON.stringify(sample, null, 2))
     })
   })
 }
 
-//generateFakeDataForSchema('userContent', 'output/userContent.json')
+if (argv.schema) {
+  generateFakeDataForSchema(argv.schema)
+  console.log('Fake data generated for: ' + argv.schema)
+}
+else {
+    console.log("Missing schema name")
+}
 
-//generateFakeDataForSchema('comments', 'output/comments.json')
-
-//generateFakeDataForSchema('relatedItems', 'output/relatedItems.json')
-
-generateFakeDataForSchema('rating')
 
