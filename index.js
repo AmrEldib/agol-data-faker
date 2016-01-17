@@ -8,7 +8,7 @@ jsf.extend('faker', function (faker) {
   return faker;
 });
 
-var generateFakeDataForSchema = function (schemaName) {
+var generateFakeDataForSchema = function (schemaName, outputFile) {
 
   var schemaRefsFiles = config.schemas[schemaName].map(function (ref) {
     return config.schemasFolder + '/' + ref + '.json'
@@ -31,12 +31,10 @@ var generateFakeDataForSchema = function (schemaName) {
 
       var sample = jsf(schema, refs)
 
-      fs.writeFile('output/fakedata.json', JSON.stringify(sample, null, 2))
-
-      console.log("fake data generated")
+      fs.writeFile(outputFile, JSON.stringify(sample, null, 2))
     })
   })
 }
 
-generateFakeDataForSchema('userContent')
+generateFakeDataForSchema('userContent', 'output/userContent.json')
 
