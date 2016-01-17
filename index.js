@@ -23,10 +23,12 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
     throw Error("Invalid schema name. Name must be one of: " + keys)
   }
 
+  // Get path of schema file
   if (!outputFile) {
-    outputFile = 'output/' + schemaName + '.json'
+    outputFile = config.outputFolder + '/' + schemaName + '.json'
   }
 
+  // Get paths of referenced files
   var schemaRefsFiles = config.schemas[schemaName].map(function (ref) {
     return path.resolve(__dirname, config.schemasFolder + '/' + ref + '.json')
   })
