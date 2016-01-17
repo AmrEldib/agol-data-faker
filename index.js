@@ -10,6 +10,10 @@ jsf.extend('faker', function (faker) {
 
 var generateFakeDataForSchema = function (schemaName, outputFile) {
 
+  if (!outputFile) {
+    outputFile = 'output/' + schemaName + '.json'
+  }
+
   var schemaRefsFiles = config.schemas[schemaName].map(function (ref) {
     return config.schemasFolder + '/' + ref + '.json'
   })
@@ -40,5 +44,7 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
 
 //generateFakeDataForSchema('comments', 'output/comments.json')
 
-generateFakeDataForSchema('relatedItems', 'output/relatedItems.json')
+//generateFakeDataForSchema('relatedItems', 'output/relatedItems.json')
+
+generateFakeDataForSchema('rating')
 

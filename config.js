@@ -18,7 +18,8 @@ var config = {
       "folder",
       "extent",
       "coordinate"
-    ]
+    ],
+    "rating": [ ]
   }
 }
 
