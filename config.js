@@ -12,6 +12,12 @@ var config = {
     ],
     "comments": [
       "comment"
+    ],
+    "relatedItems": [
+      "item",
+      "folder",
+      "extent",
+      "coordinate"
     ]
   }
 }

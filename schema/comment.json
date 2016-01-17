@@ -1,4 +1,4 @@
-﻿{
+{
   "id": "comment",
   "type": "object",
   "description": "Comment on a certain item",
@@ -23,12 +23,18 @@
       "chance": "timestamp"
     },
     "comment": {
-      "id": "comment",
+      "id": "commentText",
       "type": "string",
       "description": "The comment text",
       "chance": {
         "paragraph": { "sentences": 3 }
       }
     }
-  }
+  },
+  "required": [
+    "id",
+    "owner",
+    "created",
+    "comment"
+  ]
 }

@@ -36,5 +36,9 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
   })
 }
 
-generateFakeDataForSchema('userContent', 'output/userContent.json')
+//generateFakeDataForSchema('userContent', 'output/userContent.json')
+
+//generateFakeDataForSchema('comments', 'output/comments.json')
+
+generateFakeDataForSchema('relatedItems', 'output/relatedItems.json')
 
