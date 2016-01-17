@@ -1,0 +1,34 @@
+﻿{
+  "id": "comment",
+  "type": "object",
+  "description": "Comment on a certain item",
+  "title": "comment",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string",
+      "description": "The ID of the comment",
+      "chance": "hash"
+    },
+    "owner": {
+      "id": "owner",
+      "type": "string",
+      "description": "The username of the user who submitted the comment",
+      "chance": "first"
+    },
+    "created": {
+      "id": "created",
+      "type": "integer",
+      "description": "The date and time the comment was created. Shown in UNIX time",
+      "chance": "timestamp"
+    },
+    "comment": {
+      "id": "comment",
+      "type": "string",
+      "description": "The comment text",
+      "chance": {
+        "paragraph": { "sentences": 3 }
+      }
+    }
+  }
+}

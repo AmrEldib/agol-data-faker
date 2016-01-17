@@ -2,13 +2,16 @@
 var config = {
   // Folder where schemas are stored
   "schemasFolder": "schema",
-  // Schemas and objects that are referenced in them
+  // Schemas and objects that they reference
   "schemas": {
     "userContent": [
       "item",
       "folder",
       "extent",
       "coordinate"
+    ],
+    "comments": [
+      "comment"
     ]
   }
 }

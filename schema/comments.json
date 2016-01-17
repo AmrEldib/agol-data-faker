@@ -1,0 +1,10 @@
+﻿{
+  "description": "Lists all comments for an item. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Item_Comments/02r300000088000000/",
+  "title": "comments",
+  "id": "comments",
+  "type": "array",
+  "minLength": 0,
+  "items": {
+    "$ref": "comment"
+  }
+}
