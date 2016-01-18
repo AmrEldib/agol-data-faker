@@ -37,7 +37,8 @@ var config = {
     ],
     "groups": [
       "group"
-    ]
+    ],
+    "notification": []
   }
 }
 
