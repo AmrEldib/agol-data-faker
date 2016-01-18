@@ -7,7 +7,8 @@
     "username": {
       "id": "username",
       "type": "string",
-      "description": "The username of the content"
+      "description": "The username of the content",
+      "chance": "first"
     },
     "currentFolder": {
       "$ref": "folder" 

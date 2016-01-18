@@ -26,7 +26,8 @@ var config = {
     "groupContent": [
       "item"
     ],
-    "group": []
+    "group": [],
+    "groupApplication": []
   }
 }
 
