@@ -30,7 +30,8 @@ var config = {
     "groupApplication": [],
     "groupApplications": [
       "groupApplication"
-    ]
+    ],
+    "groupUsers": []
   }
 }
 
