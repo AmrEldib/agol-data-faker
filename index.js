@@ -56,8 +56,12 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
 }
 
 if (argv.schema) {
-  generateFakeDataForSchema(argv.schema)
-  console.log('Fake data generated for: ' + argv.schema)
+  try {
+    generateFakeDataForSchema(argv.schema)
+    console.log('Fake data generated for: ' + argv.schema)
+  } catch (e) {
+    console.error("Error: " + e.message)
+  }
 }
 else {
     console.log("Missing schema name")
