@@ -25,7 +25,8 @@ var config = {
     "rating": [],
     "groupContent": [
       "item"
-    ]
+    ],
+    "group": []
   }
 }
 
