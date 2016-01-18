@@ -22,7 +22,10 @@ var config = {
     "relatedItems": [
       "item"
     ],
-    "rating": [ ]
+    "rating": [],
+    "groupContent": [
+      "item"
+    ]
   }
 }
 
