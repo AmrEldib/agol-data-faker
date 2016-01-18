@@ -7,19 +7,20 @@ var config = {
   // Schemas and objects that they reference
   "schemas": {
     "userContent": [
-      "item",
+      "item"
+    ],
+    "item": [
       "folder",
-      "extent",
+      "extent"
+    ],
+    "extent": [
       "coordinate"
     ],
     "comments": [
       "comment"
     ],
     "relatedItems": [
-      "item",
-      "folder",
-      "extent",
-      "coordinate"
+      "item"
     ],
     "rating": [ ]
   }
