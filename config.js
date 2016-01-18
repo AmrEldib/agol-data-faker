@@ -35,6 +35,9 @@ var config = {
     "userInvitation": [
       "group"
     ],
+    "userInvitations": [
+      "userInvitation"
+    ],
     "groups": [
       "group"
     ],
