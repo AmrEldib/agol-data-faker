@@ -1,5 +1,6 @@
 ﻿## ignore folder used to store output data
 output
+vwd.webinfo
 
 ################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
