@@ -27,7 +27,10 @@ var config = {
       "item"
     ],
     "group": [],
-    "groupApplication": []
+    "groupApplication": [],
+    "groupApplications": [
+      "groupApplication"
+    ]
   }
 }
 
