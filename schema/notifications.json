@@ -3,7 +3,6 @@
   "title": "notifications",
   "id": "notifications",
   "type": "object",
-  "minLength": 0,
   "properties": {
     "notifications": {
       "id": "notifications",
