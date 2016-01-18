@@ -38,7 +38,10 @@ var config = {
     "groups": [
       "group"
     ],
-    "notification": []
+    "notification": [],
+    "notifications": [
+      "notification"
+    ]
   }
 }
 
