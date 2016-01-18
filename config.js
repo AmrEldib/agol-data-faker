@@ -31,7 +31,10 @@ var config = {
     "groupApplications": [
       "groupApplication"
     ],
-    "groupUsers": []
+    "groupUsers": [],
+    "userInvitation": [
+      "group"
+    ]
   }
 }
 
