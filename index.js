@@ -1,11 +1,11 @@
 ﻿#!/usr/bin/env node
 
-var jsf = require('json-schema-faker')
-var fs = require('fs')
-var path = require('path')
-var readMultipleFiles = require('read-multiple-files')
-var config = require('./config')
-var argv = require('minimist')(process.argv.slice(2))
+var jsf = require('json-schema-faker');
+var fs = require('fs');
+var path = require('path');
+var readMultipleFiles = require('read-multiple-files');
+var config = require('./config');
+var argv = require('minimist')(process.argv.slice(2));
 
 // Configure the locale of faker.js
 jsf.extend('faker', function (faker) {
@@ -15,34 +15,34 @@ jsf.extend('faker', function (faker) {
 
 // Check if a schema has any dependencies
 var hasRefs = function(schemaName) {
-  return (config.schemas[schemaName])
+  return (config.schemas[schemaName]);
 }
 
 // Resolve dependencies of a certain schema
 var getSchemaRefs = function (schemaName) {
-  var schemaRefs = config.schemas[schemaName]
+  var schemaRefs = config.schemas[schemaName];
   schemaRefs.forEach(function(schemaRef) {
     if (schemaRefs.indexOf(schemaRef) === -1) {
-      schemaRefs.push(schemaRef)
+      schemaRefs.push(schemaRef);
     }
     if (hasRefs(schemaRef)) {
       getSchemaRefs(schemaRef).map(function(sr) {
         if (schemaRefs.indexOf(sr) === -1) {
-          schemaRefs.push(sr)
+          schemaRefs.push(sr);
         }
       })
     }
   })
-  return schemaRefs
+  return schemaRefs;
 }
 
 // Gets a list of all avaliable schemas
 var getSchemaList = function() {
-  var keys = []
+  var keys = [];
   for (var key in config.schemas) {
-    keys.push(key)
+    keys.push(key);
   }
-  return keys
+  return keys;
 }
 
 // Generate fake data for a certain schema and write it to file
@@ -50,23 +50,23 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
 
   // Check if schema name if valid
   if (config.schemas[schemaName] == undefined) {
-    throw Error("Invalid schema name. Name must be one of: " + getSchemaList())
+    throw Error("Invalid schema name. Name must be one of: " + getSchemaList());
   }
 
   // Collect schema refs
-  var schemaRefs = []
+  var schemaRefs = [];
   if (hasRefs(schemaName)) {
-    schemaRefs = getSchemaRefs(schemaName)
+    schemaRefs = getSchemaRefs(schemaName);
   }
 
   // Get path of schema file
   if (!outputFile) {
-    outputFile = config.outputFolder + '/' + schemaName + '.json'
+    outputFile = config.outputFolder + '/' + schemaName + '.json';
   }
 
   // Get paths of referenced files
   var schemaRefsFiles = schemaRefs.map(function (ref) {
-    return path.resolve(__dirname, config.schemasFolder + '/' + ref + '.json')
+    return path.resolve(__dirname, config.schemasFolder + '/' + ref + '.json');
   })
 
   // Read schema file
@@ -80,30 +80,30 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
       }
 
       // Parse schema and refs into JSON objects
-      var schema = JSON.parse(schemaFileContent)
-      var refs = []
+      var schema = JSON.parse(schemaFileContent);
+      var refs = [];
       contents.forEach(function (refFileContent) {
-        refs.push(JSON.parse(refFileContent))
+        refs.push(JSON.parse(refFileContent));
       })
 
       // Generate fake data
-      var fakeData = jsf(schema, refs)
+      var fakeData = jsf(schema, refs);
       // Write fake data to file
-      fs.writeFile(path.resolve(__dirname, outputFile), JSON.stringify(fakeData, null, 2))
+      fs.writeFile(path.resolve(__dirname, outputFile), JSON.stringify(fakeData, null, 2));
     })
   })
 }
 
 if (argv.schema) {
   try {
-    generateFakeDataForSchema(argv.schema)
-    console.log('Fake data generated for: ' + argv.schema)
+    generateFakeDataForSchema(argv.schema);
+    console.log('Fake data generated for: ' + argv.schema);
   } catch (e) {
-    console.error("Error: " + e.message)
+    console.error("Error: " + e.message);
   }
 }
 else {
-    console.log("Missing schema name")
+  console.log("Missing schema name");
 }
 
 
