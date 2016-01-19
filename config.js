@@ -53,7 +53,8 @@ var config = {
     "userTags": [
       "userTag"
     ],
-    "registeredApp": []
+    "registeredApp": [],
+    "root": []
   }
 }
 
