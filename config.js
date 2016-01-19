@@ -5,6 +5,8 @@ var config = {
   // Folder where fake data is stored
   "outputFolder": "output",
   // Schemas and objects that they reference
+  // Top level items are schemas that can be generated
+  // If a schema is not listed in the top level, it can't be generated
   "schemas": {
     "userContent": [
       "item"
@@ -47,8 +49,11 @@ var config = {
     ],
     "user": [
       "group"
+    ],
+    "userTags": [
+      "userTag"
     ]
   }
 }
 
-module.exports = config
+module.exports = config;
