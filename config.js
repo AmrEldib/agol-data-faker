@@ -44,6 +44,9 @@ var config = {
     "notification": [],
     "notifications": [
       "notification"
+    ],
+    "user": [
+      "group"
     ]
   }
 }
