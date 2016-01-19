@@ -52,7 +52,8 @@ var config = {
     ],
     "userTags": [
       "userTag"
-    ]
+    ],
+    "registeredApp": []
   }
 }
 
