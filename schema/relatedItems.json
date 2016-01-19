@@ -1,8 +1,8 @@
 {
-  "description": "Gets all the related items of a certain relationship type for that item. An optional direction can be specified if the direction of the relationship is ambiguous. Otherwise, the service will try to infer it. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Related_Items/02r300000085000000/",
-  "title": "Related Items",
   "id": "relatedItems",
   "type": "object",
+  "description": "Gets all the related items of a certain relationship type for that item. An optional direction can be specified if the direction of the relationship is ambiguous. Otherwise, the service will try to infer it. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Related_Items/02r300000085000000/",
+  "title": "Related Items",
   "properties": {
     "total": {
       "id": "total",

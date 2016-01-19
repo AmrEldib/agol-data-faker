@@ -1,7 +1,7 @@
 {
   "id": "user",
   "type": "object",
-  "description": "A user resource representing a registered user of the portal",
+  "description": "A user resource representing a registered user of the portal. Personal details of the user, such as e-mail and groups, are returned only to the user or the administrator of the user's organization (the properties in the Response Properties table below). A user is not visible to any other user (except the organization's administrator) if their access setting is set to private. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/User/02r3000000m2000000/",
   "title": "user",
   "properties": {
     "username": {

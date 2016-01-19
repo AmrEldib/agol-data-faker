@@ -1,8 +1,8 @@
 {
-  "description": "The group's content provides access to the items that are shared with the group. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Group_Content/02r300000081000000/",
-  "title": "groupContent",
   "id": "groupContent",
   "type": "object",
+  "description": "The group's content provides access to the items that are shared with the group. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Group_Content/02r300000081000000/",
+  "title": "groupContent",
   "properties": {
     "items": {
       "id": "items",

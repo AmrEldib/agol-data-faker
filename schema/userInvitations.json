@@ -1,8 +1,8 @@
 {
-  "description": "Shows the invitations sent to the authenticated user. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/User_Invitations/02r3000000m7000000/",
-  "title": "userInvitations",
   "id": "userInvitations",
   "type": "object",
+  "description": "Shows the invitations sent to the authenticated user. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/User_Invitations/02r3000000m7000000/",
+  "title": "userInvitations",
   "properties": {
     "userInvitations": {
       "id": "userInvitations",

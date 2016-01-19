@@ -1,7 +1,7 @@
 {
   "id": "comment",
   "type": "object",
-  "description": "Comment on a certain item",
+  "description": "Gets details for a particular comment. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Item_Comment/02r300000091000000/",
   "title": "comment",
   "properties": {
     "id": {

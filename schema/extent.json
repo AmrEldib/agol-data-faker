@@ -1,8 +1,8 @@
 {
   "id": "extent",
+  "type": [ "array", "null" ],
   "description": "The bounding rectangle of the item. Should always be in WGS84",
   "title": "extent",
-  "type": [ "array", "null" ],
   "minLength": 2,
   "maxLength": 2,
   "items": {

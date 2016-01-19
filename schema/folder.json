@@ -1,8 +1,8 @@
 {
   "id": "folder",
+  "type": [ "object", "null" ],
   "description": "The current folder listing the user's items",
   "title": "folder",
-  "type": [ "object", "null" ],
   "additionalProperties": false,
   "properties": {
     "username": {

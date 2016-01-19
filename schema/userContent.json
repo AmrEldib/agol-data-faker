@@ -1,7 +1,7 @@
 {
   "id": "userContent",
   "type": "object",
-  "description": "Schema for response of User Content Request http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/User_Content/02r30000007p000000/",
+  "description": "The user's content are items either in the home folder for the user, e.g. /content/users/<username>, or in a subfolder of the home folder with the given folder ID. Multilevel folders are not supported. You can also see the Quick reference topic for additional information on this. Items in a folder are stored by reference and are not physically in a folder. Rather, they're stored as links to the original item, e.g. /content/items/<itemId>. http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/User_Content/02r30000007p000000/",
   "title": "userContent",
   "properties": {
     "username": {

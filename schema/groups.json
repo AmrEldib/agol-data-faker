@@ -1,8 +1,8 @@
 {
-  "description": "Lists the groups of which the item is a part. Only shows the groups that the calling user can access http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Groups/02r30000009p000000/",
-  "title": "groups",
   "id": "groups",
   "type": "object",
+  "description": "Lists the groups of which the item is a part. Only shows the groups that the calling user can access http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Groups/02r30000009p000000/",
+  "title": "groups",
   "properties": {
     "admin": {
       "id": "admin",

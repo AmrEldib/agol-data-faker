@@ -1,8 +1,8 @@
 {
   "id": "coordinate",
+  "type": "array",
   "description": "Coordinate",
   "title": "coordinate",
-  "type": "array",
   "minLength": 2,
   "maxLength": 2,
   "items": [
