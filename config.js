@@ -60,6 +60,9 @@ var config = {
       "extent",
       "portalAppInfo",
       "portalFeaturedGroup"
+    ],
+    "resources": [
+      "resource"
     ]
   }
 }
