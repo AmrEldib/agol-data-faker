@@ -1,4 +1,4 @@
-﻿
+
 var config = {
   // Folder where schemas are stored
   "schemasFolder": "schema",
@@ -54,7 +54,13 @@ var config = {
       "userTag"
     ],
     "registeredApp": [],
-    "root": []
+    "root": [],
+    "portal": [
+      "user",
+      "extent",
+      "portalAppInfo",
+      "portalFeaturedGroup"
+    ]
   }
 }
 
