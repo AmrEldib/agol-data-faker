@@ -53,6 +53,9 @@ var config = {
     "userTags": [
       "userTag"
     ],
+    "users": [
+      "user"
+    ],
     "registeredApp": [],
     "root": [],
     "portal": [
