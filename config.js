@@ -63,6 +63,9 @@ var config = {
     ],
     "resources": [
       "resource"
+    ],
+    "servers": [
+      "server"
     ]
   }
 }
