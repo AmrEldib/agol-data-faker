@@ -72,6 +72,9 @@ var config = {
     ],
     "regions": [
       "region"
+    ],
+    "languages": [
+      "language"
     ]
   }
 }
