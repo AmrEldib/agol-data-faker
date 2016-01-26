@@ -45,8 +45,18 @@ var getSchemaList = function() {
   return keys;
 }
 
+var writeFakeDataToFile = function (schemaName, fakeData, outputFile) {
+  // Get path of schema file
+  if (!outputFile) {
+    outputFile = config.outputFolder + '/' + schemaName + '.json';
+  }
+
+  // Write fake data to file
+  fs.writeFile(path.resolve(__dirname, outputFile), JSON.stringify(fakeData, null, 2));
+}
+
 // Generate fake data for a certain schema and write it to file
-var generateFakeDataForSchema = function (schemaName, outputFile) {
+var generateFakeDataForSchema = function (schemaName, callback) {
 
   // Check if schema name if valid
   if (config.schemas[schemaName] == undefined) {
@@ -57,11 +67,6 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
   var schemaRefs = [];
   if (hasRefs(schemaName)) {
     schemaRefs = getSchemaRefs(schemaName);
-  }
-
-  // Get path of schema file
-  if (!outputFile) {
-    outputFile = config.outputFolder + '/' + schemaName + '.json';
   }
 
   // Get paths of referenced files
@@ -88,16 +93,19 @@ var generateFakeDataForSchema = function (schemaName, outputFile) {
 
       // Generate fake data
       var fakeData = jsf(schema, refs);
-      // Write fake data to file
-      fs.writeFile(path.resolve(__dirname, outputFile), JSON.stringify(fakeData, null, 2));
+      // return fake data
+      callback(fakeData);
     })
   })
 }
 
 if (argv.schema) {
   try {
-    generateFakeDataForSchema(argv.schema);
-    console.log('Fake data generated for: ' + argv.schema);
+    var fakeData = generateFakeDataForSchema(argv.schema, function(fakeData) {
+      console.log(fakeData);
+      writeFakeDataToFile(argv.schema, fakeData);
+      console.log('Fake data generated for: ' + argv.schema);
+    });
   } catch (e) {
     console.error("Error: " + e.message);
   }
