@@ -99,6 +99,10 @@ var generateFakeDataForSchema = function (schemaName, callback) {
   })
 }
 
+module.exports = {
+  generateFakeDataForSchema: generateFakeDataForSchema
+};
+
 if (argv.schema) {
   try {
     var fakeData = generateFakeDataForSchema(argv.schema, function(fakeData) {
