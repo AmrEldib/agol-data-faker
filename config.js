@@ -21,6 +21,7 @@ var config = {
     "comments": [
       "comment"
     ],
+    "comment": [],
     "relatedItems": [
       "item"
     ],
@@ -70,6 +71,7 @@ var config = {
     "servers": [
       "server"
     ],
+    "server": [],
     "regions": [
       "region"
     ],

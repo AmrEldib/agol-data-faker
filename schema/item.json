@@ -201,12 +201,7 @@
       "id": "spatialReference",
       "type": [ "string", "null" ],
       "description": "The coordinate system of the item",
-      "chance": {
-        "natural": {
-          "min": 11111,
-          "max": 99999
-        }
-      }
+      "chance": "word"
     },
     "accessInformation": {
       "id": "accessInformation",

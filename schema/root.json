@@ -8,13 +8,7 @@
       "id": "currentVersion",
       "type": "string",
       "description": "The release version for this portal",
-      "chance": {
-        "floating": {
-          "min": 0,
-          "max": 4,
-          "fixed": 1
-        }
-      }
+      "chance": "word"
     }
   },
   "required": [
