@@ -63,7 +63,7 @@
     },
     "fromUsername": {
       "id": "fromUsername",
-      "type": [ "object", "null" ],
+      "type": "object",
       "description": "A JSON object about the user who sent the invitation. This includes their username and fullname",
       "properties": {
         "username": {
