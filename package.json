@@ -1,18 +1,29 @@
 {
   "name": "agol-data-faker",
   "version": "0.2.1",
-  "description": "Generate Fake data for ArcGIS Online",
+  "description": "Generate fake data of ArcGIS Online responses",
   "main": "index.js",
   "bin": {
     "agol-data-faker": "index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmrEldib/agol-data-faker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AmrEldib/agol-data-faker/issues"
+  },
+  "homepage": "https://github.com/AmrEldib/agol-data-faker#readme",
   "dependencies": {
+    "agol-schemas": "^0.3.2",
     "json-schema-faker": "^0.2.6",
     "minimist": "^1.2.0",
     "read-multiple-files": "^1.1.1",
     "refaker": "^0.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "documentation": "^3.0.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +34,11 @@
     "fake"
   ],
   "author": "Amr Eldib",
+  "contributors": [
+    {
+      "name": "Amr Eldib",
+      "url": "http://amreldib.com"
+    }
+  ],
   "license": "MIT"
 }

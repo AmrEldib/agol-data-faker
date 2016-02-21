@@ -1,11 +1,5 @@
-﻿#!/usr/bin/env node
-
 var jsf = require('json-schema-faker');
-var fs = require('fs');
-var path = require('path');
-var readMultipleFiles = require('read-multiple-files');
-var config = require('./config');
-var argv = require('minimist')(process.argv.slice(2));
+var agolSchemas = require('agol-schemas');
 
 // Configure the locale of faker.js
 jsf.extend('faker', function (faker) {
@@ -13,109 +7,29 @@ jsf.extend('faker', function (faker) {
   return faker;
 });
 
-// Check if a schema has any dependencies
-var hasRefs = function(schemaName) {
-  return (config.schemas[schemaName]);
+/*
+ * Gets a list of all available schemas
+ * @returns {array} List of names of available schemas for which fake data could be generated
+ */
+function listAllSchemas() {
+  return agolSchemas.listAllSchemas();
 }
 
-// Resolve dependencies of a certain schema
-var getSchemaRefs = function (schemaName) {
-  var schemaRefs = config.schemas[schemaName];
-  schemaRefs.forEach(function(schemaRef) {
-    if (schemaRefs.indexOf(schemaRef) === -1) {
-      schemaRefs.push(schemaRef);
-    }
-    if (hasRefs(schemaRef)) {
-      getSchemaRefs(schemaRef).map(function(sr) {
-        if (schemaRefs.indexOf(sr) === -1) {
-          schemaRefs.push(sr);
-        }
-      })
-    }
-  })
-  return schemaRefs;
-}
-
-// Gets a list of all avaliable schemas
-var getSchemaList = function() {
-  var keys = [];
-  for (var key in config.schemas) {
-    keys.push(key);
-  }
-  return keys;
-}
-
-var writeFakeDataToFile = function (schemaName, fakeData, outputFile) {
-  // Get path of schema file
-  if (!outputFile) {
-    outputFile = config.outputFolder + '/' + schemaName + '.json';
-  }
-
-  // Write fake data to file
-  fs.writeFile(path.resolve(__dirname, outputFile), JSON.stringify(fakeData, null, 2));
-}
-
-// Generate fake data for a certain schema and write it to file
-var generateFakeDataForSchema = function (schemaName, callback) {
-
-  // Check if schema name if valid
-  if (config.schemas[schemaName] == undefined) {
-    throw Error("Invalid schema name. Name must be one of: " + getSchemaList());
-  }
-
-  // Collect schema refs
-  var schemaRefs = [];
-  if (hasRefs(schemaName)) {
-    schemaRefs = getSchemaRefs(schemaName);
-  }
-
-  // Get paths of referenced files
-  var schemaRefsFiles = schemaRefs.map(function (ref) {
-    return path.resolve(__dirname, config.schemasFolder + '/' + ref + '.json');
-  })
-
-  // Read schema file
-  fs.readFile(path.resolve(__dirname, config.schemasFolder + '/' + schemaName + '.json'), function (err, schemaFileContent) {
-
-    // Read reference files
-    readMultipleFiles(schemaRefsFiles, 'utf8',
-    (err, contents) => {
-      if (err) {
-        throw err;
-      }
-
-      // Parse schema and refs into JSON objects
-      var schema = JSON.parse(schemaFileContent);
-      var refs = [];
-      contents.forEach(function (refFileContent) {
-        refs.push(JSON.parse(refFileContent));
-      })
-
-      // Generate fake data
-      var fakeData = jsf(schema, refs);
-      // return fake data
-      callback(fakeData);
-    })
-  })
+/*
+ * Generate fake data for a certain schema
+ * @param {string} schemaName Name of the schema to be generated.
+ * @param {function} callback Function to be called after fake data is generated. This function accepts one JSON object of the generated data.
+ */
+function generateFakeDataForSchema(schemaName, callback) {
+  agolSchemas.getSchema(schemaName, function (schema) {
+    // Generate fake data
+    var fakeData = jsf(schema);
+    // return fake data
+    callback(fakeData);
+  });
 }
 
 module.exports = {
+  listAllSchemas: listAllSchemas,
   generateFakeDataForSchema: generateFakeDataForSchema
 };
-
-if (argv.schema) {
-  try {
-    var fakeData = generateFakeDataForSchema(argv.schema, function(fakeData) {
-      console.log(fakeData);
-      writeFakeDataToFile(argv.schema, fakeData);
-      console.log('Fake data generated for: ' + argv.schema);
-    });
-  } catch (e) {
-    console.error("Error: " + e.message);
-  }
-}
-else {
-  console.log("Missing schema name");
-}
-
-
