@@ -7,7 +7,7 @@ jsf.extend('faker', function (faker) {
   return faker;
 });
 
-/*
+/**
  * Gets a list of all available schemas
  * @returns {array} List of names of available schemas for which fake data could be generated
  */
@@ -15,7 +15,7 @@ function listAllSchemas() {
   return agolSchemas.listAllSchemas();
 }
 
-/*
+/**
  * Generate fake data for a certain schema
  * @param {string} schemaName Name of the schema to be generated.
  * @param {function} callback Function to be called after fake data is generated. This function accepts one JSON object of the generated data.

@@ -10,5 +10,7 @@ Gets a list of all available schemas
 `generateFakeDataForSchema`  
 Generate fake data for a certain schema  
   
+For full code documentation, see documentation in the `docs` folder.  
+  
 ## Installation
 `npm install agol-data-faker`
