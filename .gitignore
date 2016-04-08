@@ -1,4 +1,7 @@
-﻿## ignore folder used to store output data
+agol-data-faker.sln
+agol-data-faker.njsproj
+
+## ignore folder used to store output data
 output
 vwd.webinfo
 

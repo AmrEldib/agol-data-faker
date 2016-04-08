@@ -1,5 +1,6 @@
 var jsf = require('json-schema-faker');
 var agolSchemas = require('agol-schemas');
+var RSVP = require('rsvp');
 
 // Configure the locale of faker.js
 jsf.extend('faker', function (faker) {
@@ -8,28 +9,24 @@ jsf.extend('faker', function (faker) {
 });
 
 /**
- * Gets a list of all available schemas
- * @returns {array} List of names of available schemas for which fake data could be generated
- */
-function listAllSchemas() {
-  return agolSchemas.listAllSchemas();
-}
-
-/**
  * Generate fake data for a certain schema
  * @param {string} schemaName Name of the schema to be generated.
- * @param {function} callback Function to be called after fake data is generated. This function accepts one JSON object of the generated data.
+ * @returns {object} Promise. The resolve function has one parameter representing the generated fake data.
  */
-function generateFakeDataForSchema(schemaName, callback) {
-  agolSchemas.getSchema(schemaName, function (schema) {
-    // Generate fake data
-    var fakeData = jsf(schema);
-    // return fake data
-    callback(fakeData);
+function generateFakeDataForSchema(schemaName) {
+  return new RSVP.Promise(function (resolve, reject) {
+    agolSchemas.getSchema(schemaName).then(function (schema) {
+      // Generate fake data
+      var fakeData = jsf(schema);
+      // return fake data
+      resolve(fakeData);
+    });
   });
 }
 
 module.exports = {
-  listAllSchemas: listAllSchemas,
+  listAllSchemas: agolSchemas.listAllSchemas,
   generateFakeDataForSchema: generateFakeDataForSchema
 };
+
+
