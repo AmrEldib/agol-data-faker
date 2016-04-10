@@ -1,6 +1,6 @@
 {
   "name": "agol-data-faker",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Generate fake data of ArcGIS Online responses",
   "main": "index.js",
   "repository": {

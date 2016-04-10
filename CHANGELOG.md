@@ -1,3 +1,6 @@
+## 0.4.1
+- Updated agol-schemas
+
 ## 0.4.0
 - Switched to using Promises
 - Added test
